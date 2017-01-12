@@ -117,7 +117,7 @@ static WRes MyCreateDir(const char* root, const UInt16 *name) {
 
 	Buf_Init(&buf);
 	RINOK(Utf16_To_Char(&buf, name, 1));
-	strcpy(temp, root);
+	strlcpy(temp, root, sizeof(temp));
 	strcat(temp, STRING_PATH_SEPARATOR);
 	strcat(temp, (const char *) buf.data);
 
@@ -138,7 +138,7 @@ static WRes OutFile_OpenUtf16(CSzFile *p, const char* root, const UInt16 *name) 
 
 	Buf_Init(&buf);
 	RINOK(Utf16_To_Char(&buf, name, 1));
-	strcpy(temp, root);
+	strlcpy(temp, root, sizeof(temp));
 	strcat(temp, STRING_PATH_SEPARATOR);
 	strcat(temp, (const char *) buf.data);
 
